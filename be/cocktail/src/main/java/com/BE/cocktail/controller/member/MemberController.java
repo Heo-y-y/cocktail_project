@@ -19,46 +19,33 @@ import java.io.IOException;
 @Api(tags = "member",description = "유저 API")
 @RequiredArgsConstructor
 public class MemberController {
-
     private final MemberService memberService;
 
     @ApiOperation(value = "회원가입")
     @PostMapping("/signup")
     public ApiResponse<Void> signUpMember(@Valid @RequestBody SignUpDto sign) {
-
         memberService.saveMember(sign);
-
         return ApiResponse.ok();
     }
 
     @ApiOperation(value = "회원 상세 정보")
     @GetMapping("/member/myPage")
     public ApiResponse<MemberInfoResponseDto> findMypageInfo() {
-
-        MemberInfoResponseDto response = memberService.findMyPageInfo();
-
-        return ApiResponse.ok(response);
+        return ApiResponse.ok(memberService.findMyPageInfo());
     }
 
     @ApiOperation(value = "회원 정보 수정(content)")
     @PatchMapping("/member/update/content")
-    public ApiResponse<Void> updateMypageContent(@RequestBody MemberUpdateDto updateDto) {
-
+    public ApiResponse<Void> updateMyPageContent(@RequestBody MemberUpdateDto updateDto) {
         memberService.updateContent(updateDto);
-
         return ApiResponse.ok();
-
     }
 
     @ApiOperation(value = "회원 정보 수정(image)")
     @PatchMapping(value = "/member/update/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ApiResponse<Void> updateMypageImage(@RequestPart(value="image") MultipartFile image) throws IOException {
-
+    public ApiResponse<Void> updateMyPageImage(@RequestPart(value="image") MultipartFile image) throws IOException {
         if(image.getSize() == 0) return ApiResponse.ok();
-
         memberService.updateImage(image);
-
         return ApiResponse.ok();
-
     }
 }

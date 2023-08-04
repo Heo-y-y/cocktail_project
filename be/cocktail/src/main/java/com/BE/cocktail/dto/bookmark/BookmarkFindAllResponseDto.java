@@ -19,14 +19,10 @@ public class BookmarkFindAllResponseDto {
 
     public static BookmarkFindAllResponseDto of(List<CustomRecipe> customRecipes, List<RegularRecipe> regularRecipes) {
         BookmarkFindAllResponseDto responseDto = new BookmarkFindAllResponseDto();
-
         List data = new ArrayList();
-
         data.addAll(CustomRecipeResponseDtoList.of(customRecipes).getData());
         data.addAll(RegularSearchResponseDto.listOf(regularRecipes));
-
         responseDto.setData(data);
-
         return responseDto;
     }
 }

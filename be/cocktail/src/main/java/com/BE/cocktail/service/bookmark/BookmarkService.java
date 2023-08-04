@@ -24,29 +24,21 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class BookmarkService {
-
     private final BookmarkRepository bookmarkRepository;
-
     private final MemberService memberService;
-
     private Long recipeId;
-
 
     @Transactional
     public void checkBookmark(Long id, BookmarkRequestDto requestDto) {
-
         Long memberId = memberService.getLoginMember().getId();
-
         Bookmark bookmark = bookmarkRepository.findByRecipe(memberId, id, requestDto.getRecipeType());
 
         if (bookmark == null) {
             saveBookmark(id, requestDto);
         }
-
         else if(bookmark.isDeleted() != false) {
             bookmark.update();
         }
-
         else {
             throw new CocktailException(CocktailRtnConsts.ERR410);
         }
@@ -54,25 +46,18 @@ public class BookmarkService {
 
     @Transactional
     public void saveBookmark(Long id, BookmarkRequestDto requestDto) {
-
         Long memberId = memberService.getLoginMember().getId();
 
         if(requestDto.getRecipeType() == Bookmark.RecipeType.CUSTOM_RECIPE) {
             CustomRecipe findCustom = bookmarkRepository.findCustomById(id).orElseThrow(() -> new CocktailException(CocktailRtnConsts.ERR401));
-
             recipeId = findCustom.getId();
         }
-
         else if(requestDto.getRecipeType() == Bookmark.RecipeType.REGULAR_RECIPE) {
             RegularRecipe findRegular = bookmarkRepository.findRegularById(id).orElseThrow(() -> new CocktailException(CocktailRtnConsts.ERR401));
-
             recipeId = findRegular.getId();
         }
-
         Bookmark bookmark = Bookmark.of(recipeId, requestDto.getRecipeType(), memberId);
-
         bookmarkRepository.save(bookmark);
-
     }
 
     @Transactional
@@ -81,28 +66,21 @@ public class BookmarkService {
 
         if(requestDto.getRecipeType() == Bookmark.RecipeType.CUSTOM_RECIPE) {
             CustomRecipe findCustom = bookmarkRepository.findCustomById(id).orElseThrow(() -> new CocktailException(CocktailRtnConsts.ERR401));
-
             recipeId = findCustom.getId();
         }
-
         else if(requestDto.getRecipeType() == Bookmark.RecipeType.REGULAR_RECIPE) {
             RegularRecipe findRegular = bookmarkRepository.findRegularById(id).orElseThrow(() -> new CocktailException(CocktailRtnConsts.ERR401));
-
             recipeId = findRegular.getId();
         }
-
         Bookmark bookmark = bookmarkRepository.findByRecipe(memberId, id, requestDto.getRecipeType());
 
         if(bookmark == null) {
             throw new CocktailException(CocktailRtnConsts.ERR401);
         }
-
         bookmark.cancel();
-
     }
 
     public MultiResponseDto<BookmarkFindAllResponseDto> findAll(int page, int size) {
-
         Long memberId = memberService.getLoginMember().getId();
 
         List<Bookmark> customBookmark = bookmarkRepository.findAllCustomByMemberId(memberId, Bookmark.RecipeType.CUSTOM_RECIPE);
@@ -117,17 +95,13 @@ public class BookmarkService {
             return regularRecipe;
         }).collect(Collectors.toList());
 
-
         BookmarkFindAllResponseDto data = BookmarkFindAllResponseDto.of(customRecipes, regularRecipes);
-
 
         PageRequest pageRequest = PageRequest.of(page, size);
         int start = (int) pageRequest.getOffset();
         int end = Math.min((start + pageRequest.getPageSize()), data.getData().size());
         Page<BookmarkFindAllResponseDto> bookmarkPage = new PageImpl<>(data.getData().subList(start, end), pageRequest, data.getData().size());
-
         List<BookmarkFindAllResponseDto> responseData = bookmarkPage.getContent();
-
         return MultiResponseDto.of(responseData, PageInfo.of(bookmarkPage));
     }
 }

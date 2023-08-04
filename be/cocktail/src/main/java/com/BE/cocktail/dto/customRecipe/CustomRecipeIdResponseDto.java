@@ -9,12 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CustomRecipeIdResponseDto {
-
     private Long recipeId;
 
     public static CustomRecipeIdResponseDto of(Long recipeId) {
-        CustomRecipeIdResponseDto responseDto = new CustomRecipeIdResponseDto(recipeId);
-        return responseDto;
+        return new CustomRecipeIdResponseDto(recipeId);
     }
-
 }

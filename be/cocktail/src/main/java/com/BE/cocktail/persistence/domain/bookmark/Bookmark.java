@@ -15,28 +15,21 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Bookmark {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
     private Long id;
-
     @Column(nullable = false)
     private Long memberId;
-
     @Column(nullable = false)
     private Long recipeId;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private RecipeType recipeType;
-
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt = LocalDateTime.now();
-
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime modifiedAt = LocalDateTime.now();
-
     @Column(nullable = false)
     private boolean deleted;
 
@@ -47,8 +40,7 @@ public class Bookmark {
     }
 
     public static Bookmark of(Long recipeId, RecipeType recipeType, Long memberId) {
-        Bookmark bookmark = new Bookmark(memberId, recipeId, recipeType);
-        return bookmark;
+        return new Bookmark(memberId, recipeId, recipeType);
     }
 
     public void update() {
@@ -61,9 +53,7 @@ public class Bookmark {
         this.setDeleted(true);
     }
 
-
     public enum RecipeType {
         CUSTOM_RECIPE, REGULAR_RECIPE
-
     }
 }

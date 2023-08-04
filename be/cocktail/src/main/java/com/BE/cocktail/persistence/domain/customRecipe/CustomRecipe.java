@@ -14,47 +14,35 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CustomRecipe {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
     private Long id;
-
     private String imageUrl;
-
     @Column(nullable = false, unique = true)
     private String name;
-
     @Column(nullable = false)
     private String description;
-
     @Column(nullable = false)
     private String recipe;
-
     @Column(nullable = false)
     private String ingredient;
-
     @Column(nullable = false)
     private Long memberId;
-
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt = LocalDateTime.now();
-
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime modifiedAt = LocalDateTime.now();
-
     @Column(nullable = false)
     private boolean deleted;
 
     public static CustomRecipe of(CustomRecipeCreateDto customRecipeCreateDto, Long memberId) {
         CustomRecipe customRecipe = new CustomRecipe();
-
         customRecipe.setName(customRecipeCreateDto.getName());
         customRecipe.setDescription(customRecipeCreateDto.getDescription());
         customRecipe.setRecipe(customRecipeCreateDto.getRecipe());
         customRecipe.setIngredient(customRecipeCreateDto.getIngredient());
         customRecipe.setMemberId(memberId);
-
         return customRecipe;
     }
 

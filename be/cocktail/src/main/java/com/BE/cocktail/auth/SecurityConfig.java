@@ -21,7 +21,6 @@ import java.util.Arrays;
 @Configuration
 public class SecurityConfig {
     private final JwtTokenizer jwtTokenizer;
-
     private final CustomAuthorityUtils authorityUtils;
 
     public SecurityConfig(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
@@ -88,6 +87,5 @@ public class SecurityConfig {
             builder.addFilter(jwtAuthenticationFilter)
                     .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);
         }
-
     }
 }

@@ -11,15 +11,10 @@ import java.util.stream.Collectors;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RegularSearchResponseDto {
-
     private Long id;
-
     private String name;
-
     private String imageUrl;
-
     private String ingredient;
-
     private String category = "REGULAR_RECIPE";
 
     public RegularSearchResponseDto(Long id, String name, String imageUrl, String ingredient) {
@@ -30,19 +25,10 @@ public class RegularSearchResponseDto {
     }
 
     public static RegularSearchResponseDto of(RegularRecipe recipe) {
-
-        RegularSearchResponseDto response = new RegularSearchResponseDto(recipe.getId(), recipe.getName(), recipe.getImageUrl(), recipe.getIngredient());
-
-        return response;
+        return new RegularSearchResponseDto(recipe.getId(), recipe.getName(), recipe.getImageUrl(), recipe.getIngredient());
     }
 
     public static List<RegularSearchResponseDto> listOf(List<RegularRecipe> recipes) {
-
-        List<RegularSearchResponseDto> list = recipes.stream().map(RegularSearchResponseDto::of).collect(Collectors.toList());
-
-        return list;
+        return recipes.stream().map(RegularSearchResponseDto::of).collect(Collectors.toList());
     }
-
-
-
 }

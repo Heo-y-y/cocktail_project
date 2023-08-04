@@ -19,28 +19,22 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class RegularRecipeService {
-
     private final RegularRecipeRepository regularRecipeRepository;
-
     private final MemberService memberService;
 
     public RegularRecipeGetResponseDto find(Long id) {
-
         RegularRecipe regularRecipe = regularRecipeRepository.findById(id)
                 .orElseThrow(() -> new CocktailException(CocktailRtnConsts.ERR400));
 
         boolean checkMember = memberService.CheckMember();
 
+        if (!checkMember) return RegularRecipeGetResponseDto.of(regularRecipe);
 
-        if (!checkMember) {
-            return RegularRecipeGetResponseDto.of(regularRecipe);
-        }
         Long memberId = memberService.getLoginMember().getId();
         Optional<Bookmark> bookmark = regularRecipeRepository.findBookmarkById(memberId, regularRecipe.getId(), Bookmark.RecipeType.REGULAR_RECIPE);
 
@@ -52,7 +46,6 @@ public class RegularRecipeService {
     }
 
     public MultiResponseDto<RegularSearchResponseDto> searchRecipes(String keyword, int page, int size) {
-
         Page<RegularRecipe> pages = regularRecipeRepository.findAllByKeyword(keyword, PageRequest.of(page, size, Sort.by("id").descending()));
         List<RegularRecipe> responses = pages.getContent();
 
@@ -61,8 +54,6 @@ public class RegularRecipeService {
 
     @Transactional(readOnly = true)
     public MultiResponseDto<RegularRecipeResponse> findAlcVolRange(Integer alcVolRange, int page, int size) {
-
-        // 알코올 도수별로 레시피를 보내주는 필터
         int startRange;
         int endRange;
 
@@ -84,8 +75,7 @@ public class RegularRecipeService {
         }
 
         Page<RegularRecipe> pages = regularRecipeRepository.findAllByAlcVolRange(startRange, endRange, PageRequest.of(page, size, Sort.by("alcVol").descending()));
-        List<RegularRecipe> regularRecipes = pages.getContent();
-        List<RegularRecipeResponse> regularRecipeResponses = RegularRecipeResponse.listOf(regularRecipes);
+        List<RegularRecipeResponse> regularRecipeResponses = RegularRecipeResponse.listOf(pages.getContent());
         PageInfo pageInfo = PageInfo.of(pages);
         return MultiResponseDto.of(regularRecipeResponses, pageInfo);
     }

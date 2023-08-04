@@ -28,10 +28,8 @@ public class RegularRecipeResponse {
     }
 
     public static List<RegularRecipeResponse> listOf(List<RegularRecipe> regularRecipes) {
-
-        List<RegularRecipeResponse> list = regularRecipes.stream()
+        return regularRecipes.stream()
                 .map(RegularRecipeResponse::of)
                 .collect(Collectors.toList());
-        return list;
     }
 }

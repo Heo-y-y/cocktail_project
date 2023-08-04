@@ -8,14 +8,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiResponse<T> {
-
     @JsonIgnore
     private final CocktailRtnConsts status;
-
     private final String message;
-
     private final int code;
-
     private final T data;
 
     public static <T> ApiResponse<T> ok(T data) {

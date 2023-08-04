@@ -1,4 +1,4 @@
-package com.BE.cocktail.utils;
+package com.BE.cocktail.dto.utils;
 
 import com.BE.cocktail.dto.apiResponse.CocktailRtnConsts;
 import com.BE.cocktail.exception.CocktailException;

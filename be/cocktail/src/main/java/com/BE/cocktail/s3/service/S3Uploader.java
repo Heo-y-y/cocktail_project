@@ -20,7 +20,6 @@ import java.util.Optional;
 @Component
 @Service
 public class S3Uploader {
-
     private final AmazonS3Client amazonS3Client;
 
     @Value("${cloud.aws.s3.bucket}")
@@ -35,9 +34,7 @@ public class S3Uploader {
     private String upload(File uploadFile, String dirName) {
         String fileName = dirName + "/" + uploadFile.getName();
         String uploadImageUrl = putS3(uploadFile, fileName);
-
         removeNewFile(uploadFile);
-
         return uploadImageUrl;
     }
 

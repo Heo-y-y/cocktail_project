@@ -8,18 +8,11 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class MemberInfoResponseDto {
-
     private String imageUrl;
-
     private String nickName;
-
     private String description;
 
     public static MemberInfoResponseDto of(Member member) {
-
-        MemberInfoResponseDto response = new MemberInfoResponseDto(member.getImageUrl(), member.getNickname(), member.getStatusMessage());
-
-        return response;
+        return new MemberInfoResponseDto(member.getImageUrl(), member.getNickname(), member.getStatusMessage());
     }
-
 }

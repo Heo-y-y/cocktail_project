@@ -9,12 +9,9 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(CocktailException.class)
     @ResponseStatus(BAD_REQUEST)
     public ApiResponse<?> handleCocktailException(CocktailException ex) {
-
         return ApiResponse.notContent(ex.getCocktailRtnConsts(),ex.getMessage());
     }
-
 }

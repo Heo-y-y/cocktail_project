@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class CustomAuthorityUtils {
-
     @Value("${mail.address.admin}")
     private String adminMailAddress;
 

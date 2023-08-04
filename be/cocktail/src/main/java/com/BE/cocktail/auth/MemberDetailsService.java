@@ -36,12 +36,10 @@ public class MemberDetailsService implements UserDetailsService {
         if(findMember.isDeleted() != false) {
             throw new CocktailException(CocktailRtnConsts.ERR409);
         }
-
         return new MemberDetails(findMember);
     }
 
     private final class MemberDetails extends Member implements UserDetails {
-
         MemberDetails(Member member) {
             setId(member.getId());
             setEmail(member.getEmail());
