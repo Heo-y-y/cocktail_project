@@ -58,16 +58,16 @@ public class RegularRecipeService {
         int endRange;
 
         if (alcVolRange == 0) {
-            startRange = alcVolRange;
+            startRange = 0;
             endRange = 0;
-        } else if (alcVolRange == 1) {
+        } else if (alcVolRange < 10) {
             startRange = alcVolRange;
             endRange = 9;
-        } else if (alcVolRange == 10) {
+        } else if (alcVolRange < 20) {
             startRange = alcVolRange;
             endRange = 19;
-        } else if (alcVolRange == 20) {
-            startRange = alcVolRange;
+        } else if (alcVolRange < 30) {
+            startRange = 20;
             endRange = 29;
         } else {
             startRange = 30;

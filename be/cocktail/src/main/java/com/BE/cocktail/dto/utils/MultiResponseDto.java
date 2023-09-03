@@ -1,6 +1,5 @@
 package com.BE.cocktail.dto.utils;
 
-import jdk.dynalink.beans.StaticClass;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
