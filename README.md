@@ -15,16 +15,11 @@
 
 <br />
 
-## 2023.04.28 ~ 2023.05.26
+### 2023.04.28 ~ 2023.05.26
 
 <br /><br />
 
-## 🔗 배포 링크
-
-<br /><br />
-<a href='http://resevilleage-bukit.s3-website.ap-northeast-2.amazonaws.com/'>링크</a>
-
-<br /><br />
+## [🔗 배포 링크](http://resevilleage-bukit.s3-website.ap-northeast-2.amazonaws.com/)
 
 # 🍯 팀원 소개
 
@@ -36,18 +31,7 @@
 
 <br /><br />
 
-# 🎨 서비스 미리보기
-
-<br /><br />
-
-|                                              메인페이지                                              |                                             커스텀레시피                                             |                                               검색결과                                               |
-| :--------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: |
-| <img src="https://cdn.discordapp.com/attachments/1080711452421275668/1110787546067255296/image.png"> | <img src="https://cdn.discordapp.com/attachments/1080711452421275668/1110838043197325322/image.png"> | <img src="https://cdn.discordapp.com/attachments/1080711452421275668/1110788067805102130/image.png"> |
-|                                              상세페이지                                              |                                              마이페이지                                              |                                             로그인페이지                                             |
-|                                 <img src="https://cdn.discordapp.com/attachments/1101356615816454204/1110594510943158382/image.png">                                          |                            <img src="https://cdn.discordapp.com/attachments/1080711452421275668/1110787933037932594/image.png">                                           |                <img src="https://cdn.discordapp.com/attachments/1101356615816454204/1110595051958050816/image.png">                                             |
-| |  | |
-
-<br /><br />
+## [🎨 서비스 미리보기](https://docs.google.com/presentation/d/1om9PHQmbPaU9Ti8lerTKd850PscpjxZrvX-6VIlNdtE/edit#slide=id.g2747e70f9a2_0_0)
 
 ## ERD 🔧
 
