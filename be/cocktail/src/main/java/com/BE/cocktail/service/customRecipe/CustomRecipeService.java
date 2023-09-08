@@ -2,7 +2,6 @@ package com.BE.cocktail.service.customRecipe;
 
 import com.BE.cocktail.dto.apiResponse.CocktailRtnConsts;
 import com.BE.cocktail.dto.customRecipe.*;
-import com.BE.cocktail.dto.regularRecipe.RegularRecipeGetResponseDto;
 import com.BE.cocktail.dto.utils.MultiResponseDto;
 import com.BE.cocktail.dto.utils.PageInfo;
 import com.BE.cocktail.persistence.domain.bookmark.Bookmark;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.CharConversionException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;

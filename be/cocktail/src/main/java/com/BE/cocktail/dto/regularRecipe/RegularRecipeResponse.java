@@ -1,6 +1,7 @@
 package com.BE.cocktail.dto.regularRecipe;
 
 import com.BE.cocktail.persistence.domain.regularRecipe.RegularRecipe;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,13 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 public class RegularRecipeResponse {
+    @ApiModelProperty(example = "정규 레시피 아이디")
     private Long id;
+    @ApiModelProperty(example = "칵테일 이름")
     private String name;
+    @ApiModelProperty(example = "칵테일 이미지 URL")
     private String imageUrl;
+    @ApiModelProperty(example = "칵테일 설명")
     private String description;
 
     public static RegularRecipeResponse of(RegularRecipe regularRecipe) {

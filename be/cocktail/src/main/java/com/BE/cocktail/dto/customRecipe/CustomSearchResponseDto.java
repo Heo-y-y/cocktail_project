@@ -1,6 +1,7 @@
 package com.BE.cocktail.dto.customRecipe;
 
 import com.BE.cocktail.persistence.domain.customRecipe.CustomRecipe;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +12,13 @@ import java.util.stream.Collectors;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CustomSearchResponseDto {
+    @ApiModelProperty(example = "커스텀 레시피 아이디")
     private Long id;
+    @ApiModelProperty(example = "칵테일 이름")
     private String name;
+    @ApiModelProperty(example = "칵테일 이미지 URL")
     private String imageUrl;
+    @ApiModelProperty(example = "칵테일 재료")
     private String ingredient;
 
     public static CustomSearchResponseDto of(CustomRecipe recipe) {

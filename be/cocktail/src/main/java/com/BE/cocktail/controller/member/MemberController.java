@@ -21,27 +21,27 @@ import java.io.IOException;
 public class MemberController {
     private final MemberService memberService;
 
-    @ApiOperation(value = "회원가입")
+    @ApiOperation(value = "회원가입", notes = "회원가입 API")
     @PostMapping("/signup")
     public ApiResponse<Void> signUpMember(@Valid @RequestBody SignUpDto sign) {
         memberService.saveMember(sign);
         return ApiResponse.ok();
     }
 
-    @ApiOperation(value = "회원 상세 정보")
+    @ApiOperation(value = "회원 상세 정보", notes = "회원 상제 정보 API")
     @GetMapping("/member/myPage")
     public ApiResponse<MemberInfoResponseDto> findMypageInfo() {
         return ApiResponse.ok(memberService.findMyPageInfo());
     }
 
-    @ApiOperation(value = "회원 정보 수정(content)")
+    @ApiOperation(value = "회원 정보 내용 수정", notes = "회원 정보 내용 수정 API")
     @PatchMapping("/member/update/content")
     public ApiResponse<Void> updateMyPageContent(@RequestBody MemberUpdateDto updateDto) {
         memberService.updateContent(updateDto);
         return ApiResponse.ok();
     }
 
-    @ApiOperation(value = "회원 정보 수정(image)")
+    @ApiOperation(value = "회원 정보 image 수정", notes = "회원 정보 이미지 수정 API")
     @PatchMapping(value = "/member/update/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<Void> updateMyPageImage(@RequestPart(value="image") MultipartFile image) throws IOException {
         if(image.getSize() == 0) return ApiResponse.ok();
