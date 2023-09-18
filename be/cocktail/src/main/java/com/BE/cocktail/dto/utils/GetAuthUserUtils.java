@@ -12,7 +12,6 @@ public class GetAuthUserUtils {
         if (authentication.getName() == null || authentication.getName().equals("anonymousUser")){
             throw new CocktailException(CocktailRtnConsts.ERR401);
         }
-        authentication.getPrincipal();
         return authentication;
     }
 }

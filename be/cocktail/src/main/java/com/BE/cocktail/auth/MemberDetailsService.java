@@ -6,6 +6,7 @@ import com.BE.cocktail.exception.CocktailException;
 import com.BE.cocktail.persistence.domain.member.Member;
 import com.BE.cocktail.persistence.repository.member.MemberRepository;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,14 +20,10 @@ import java.util.Optional;
 
 
 @Component
+@RequiredArgsConstructor
 public class MemberDetailsService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final CustomAuthorityUtils authorityUtils;
-
-    public MemberDetailsService(MemberRepository memberRepository, CustomAuthorityUtils authorityUtils) {
-        this.memberRepository = memberRepository;
-        this.authorityUtils = authorityUtils;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
