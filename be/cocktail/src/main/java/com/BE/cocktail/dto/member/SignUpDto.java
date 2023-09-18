@@ -12,7 +12,6 @@ public class SignUpDto {
     @ApiModelProperty(example = "이미지 URL")
     private String imageUrl;
     @ApiModelProperty(example = "닉네임")
-    @Pattern(regexp = "^[a-zA-Z가-힣0-9-_.]{2,12}$") // 한글, 영문, 숫자, 특수문자 (- _ .) 포함한 2 ~ 12글자
     @NotBlank
     private String nickName;
     @ApiModelProperty(example = "이메일")
